@@ -2,31 +2,25 @@ import asyncio
 import os
 from dotenv import load_dotenv
 from azure.eventhub.aio import EventHubConsumerClient
-from azure.eventhub.extensions.checkpointstoreblobaio import (
-    BlobCheckpointStore,
-)
-from azure.identity.aio import DefaultAzureCredential
 
+from send_to_sqs import MessagerSender
+import json
 load_dotenv()
 
 
+CONSUMER_GROUP = os.getenv("CONSUMER_GROUP")
 CONNECTION_STR = os.getenv("CONNECTION_STR")
 EVENTHUB_NAME = os.getenv("EVENTHUB_NAME")
 
-credential = DefaultAzureCredential()
+messager = MessagerSender()
 
 async def on_event(partition_context, event):
-    print(
-        'Received the event: "{}" from the partition with ID: "{}"'.format(
-            event.body_as_str(encoding="UTF-8"), partition_context.partition_id
-        )
-    )
-
+    messager.send_message(json.dumps(event.body_as_json(encoding='UTF-8')))
     await partition_context.update_checkpoint(event)
 
 
 async def main():
-    client = EventHubConsumerClient.from_connection_string(CONNECTION_STR, EVENTHUB_NAME)
+    client = EventHubConsumerClient.from_connection_string(CONNECTION_STR, CONSUMER_GROUP)
     async with client:
 
         await client.receive(on_event=on_event, starting_position="-1")
