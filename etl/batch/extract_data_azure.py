@@ -8,7 +8,7 @@ ACCOUNT_URL = os.getenv("ACCOUNT_URL")
 
 class DataDownloader:
     def __init__(self):
-        self.service = BlobServiceClient( account_url=ACCOUNT_URL) 
+        self.service = BlobServiceClient(account_url=ACCOUNT_URL) 
         self.container_client = self.service.get_container_client('source-files')
 
     def get_file_names(self):
