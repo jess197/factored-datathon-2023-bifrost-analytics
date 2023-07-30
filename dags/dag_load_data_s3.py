@@ -3,7 +3,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 import sys
 sys.path.append("../etl/")
-from etl.app import upload_data_s3
+from etl.batch.app import upload_data_s3
 
 default_args = {
     "owner": "Bifrost Analytics - Jess",

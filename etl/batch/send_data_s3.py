@@ -25,3 +25,7 @@ class DataUploader:
         except Exception as e:
             print("An error occurred during the upload of the file to Amazon S3:")
             print(str(e))
+
+    def blob_exists(self, file_name):
+        response = self.s3.list_objects_v2(Bucket=self.bucket_name, Prefix=file_name)
+        return 'Contents' in response
