@@ -1,7 +1,7 @@
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 
 with source_amz_metadata as (
-  select raw_file
+  select raw_file, last_modified_date
     from raw.metadata
 )
 select REGEXP_REPLACE(REGEXP_REPLACE($1:title, '&quot;', '"'), '&amp;', 'and') AS title
@@ -24,5 +24,6 @@ select REGEXP_REPLACE(REGEXP_REPLACE($1:title, '&quot;', '"'), '&amp;', 'and') A
      , $1:fit::varchar(10000) as fit
      , $1:tech1::varchar(10000) as tech1
      , $1:tech2::varchar(10000) as tech2
-     , current_timestamp as ingestion_date 
+     , last_modified_date as ingestion_date 
+     , {{ dbt_utils.generate_surrogate_key(['asin','also_buy', 'also_view']) }} as metadata_key
   from source_amz_metadata

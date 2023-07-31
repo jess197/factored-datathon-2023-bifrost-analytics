@@ -1,7 +1,8 @@
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 
 with bronze_amz_metadata AS (
-  SELECT title 
+  SELECT metadata_key
+       , title 
        , asin 
        , CASE
            WHEN REGEXP_LIKE(brand, '^Visit Amazon''s\s+.*Page$', 'i') THEN REGEXP_REPLACE(brand, '^Visit Amazon''s\s+| Page$', '')  -- Remove "Visit Amazon's " from the beginning and " Page" from the end of the brand
@@ -22,8 +23,8 @@ with bronze_amz_metadata AS (
       , ingestion_date
   FROM {{ ref('amazon_metadata') }}
 )
-SELECT
-   REGEXP_REPLACE(title, '&rsquo;', '''') AS title
+SELECT distinct metadata_key
+  , REGEXP_REPLACE(title, '&rsquo;', '''') AS title
   , asin
   , brand_product as brand 
   , category 
