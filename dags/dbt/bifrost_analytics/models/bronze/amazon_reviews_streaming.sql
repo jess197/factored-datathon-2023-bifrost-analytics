@@ -1,10 +1,10 @@
 
 
 
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 
 with source_amz_reviews_streaming as (
-    SELECT PARSE_JSON(rf.value) 
+    SELECT PARSE_JSON(rf.value), rs.last_modified_date
     FROM AMAZON.RAW.REVIEWS_STREAMING rs,
     LATERAL FLATTEN(input => rs.RAW_FILE) rf
 )
@@ -20,5 +20,6 @@ with source_amz_reviews_streaming as (
       , $1:unixReviewTime as review_time
       , $1:verified as verified
       , $1:vote as vote
-      , current_timestamp as ingestion_date 
+      , last_modified_date as ingestion_date 
+      , {{ dbt_utils.generate_surrogate_key(['partition_number','asin']) }} as str_reviews_key
    FROM source_amz_reviews_streaming

@@ -1,6 +1,7 @@
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 with bronze_amz_reviews as (
-  select asin 
+  select reviews_key
+       , asin 
        , overall 
        , review_text
        , reviewer_id
@@ -11,7 +12,8 @@ with bronze_amz_reviews as (
        , ingestion_date
     FROM {{ ref('amazon_reviews') }}
 ), bronze_amz_reviews_streaming as (
-    select asin 
+    select str_reviews_key 
+       , asin 
        , overall 
        , review_text
        , reviewer_id
@@ -23,7 +25,8 @@ with bronze_amz_reviews as (
     FROM {{ ref('amazon_reviews_streaming') }}
 
 )
- SELECT asin::varchar(100) as asin
+ SELECT distinct reviews_key as surr_key_reviews
+      , asin::varchar(100) as asin
       , overall::varchar(5) as overall
       , review_text::varchar(40000) as review_text
       , reviewer_id::varchar(100) as reviewer_id
@@ -34,7 +37,8 @@ with bronze_amz_reviews as (
       , ingestion_date 
    FROM bronze_amz_reviews
   UNION 
- SELECT asin::varchar(100) as asin
+ SELECT distinct str_reviews_key as surr_key_reviews
+      , asin::varchar(100) as asin
       , overall::varchar(5) as overall
       , review_text::varchar(40000) as review_text
       , reviewer_id::varchar(100) as reviewer_id

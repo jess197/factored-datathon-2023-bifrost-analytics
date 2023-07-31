@@ -1,6 +1,6 @@
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 with source_amz_reviews as (
-  select raw_file
+  select raw_file, last_modified_date
     from raw.reviews
 )
  SELECT $1:asin as asin 
@@ -13,5 +13,6 @@ with source_amz_reviews as (
       , $1:unixReviewTime as review_time
       , $1:verified as verified
       , $1:vote as vote
-      , current_timestamp as ingestion_date 
+      , last_modified_date as ingestion_date 
+      , {{ dbt_utils.generate_surrogate_key(['review_text','reviewer_id','asin','review_time']) }} as reviews_key
    FROM source_amz_reviews
