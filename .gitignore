@@ -1,5 +1,7 @@
 venv
+bf_venv
 .*
 logs
 .env
 *__pycache__*
+airflow_settings.yaml
