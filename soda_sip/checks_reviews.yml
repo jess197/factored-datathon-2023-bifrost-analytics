@@ -1,0 +1,53 @@
+checks for reviews:
+     - missing_count(asin) = 0:
+         name: No NULL values in asin 
+     - missing_count(surr_key_reviews) = 0:
+         name: No NULL values in surr_key_reviews
+     - missing_count(review_text) = 0:
+         name: No NULL values in review_text
+     - missing_count(review_time) = 0:
+         name: No NULL values in review_time
+     - missing_count(overall) = 0:
+         name: No NULL values in overall
+     - missing_count(ingestion_date) = 0:
+         name: No NULL values in ingestion_date
+     - missing_count(reviewer_id) = 0:
+         name: No NULL values in reviewer_id
+
+     - freshness(ingestion_date):
+          warn: when > 24h
+
+     - row_count > 139.754.947:
+          name: New data arrived
+  
+     - duplicate_percent(surr_key_reviews):
+        warn: when != 0%
+     
+     - schema: 
+        name: Wrong column type 
+        fail:
+          when wrong column type:
+            review_time: timestamp_ntz
+            ingestion_date: timestamp_ntz
+            asin: varchar
+            review_text: varchar
+            verified: boolean
+     
+     - schema:
+        name: Required Column Missing
+        fail:
+          when required column missing: [asin, surr_key_reviews,review_text,overall,ingestion_date]
+
+     - schema:
+        name: Any schema changes
+        warn:
+          when schema changes:
+            - column delete
+            - column add
+            - column index change
+            - column type change
+
+# soda scan -d metadata -c configuration.yml checks_reviews.yml
+# soda scan -d reviews -c configuration.yml checks_metadata.yml
+
+

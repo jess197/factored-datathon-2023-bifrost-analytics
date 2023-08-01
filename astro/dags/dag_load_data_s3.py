@@ -2,7 +2,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 import sys
-sys.path.append("../etl/")
+sys.path.append("../../etl/")
 from etl.batch.app import upload_data_s3
 
 default_args = {

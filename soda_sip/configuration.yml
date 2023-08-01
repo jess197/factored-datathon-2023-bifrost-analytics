@@ -1,0 +1,38 @@
+data_source metadata:
+   type: snowflake
+   connection:
+     username: ${SNOWFLAKE_USER}
+     password: ${SNOWFLAKE_PASS}
+     account: ${SNOWFLAKE_ACCOUNT}
+     database: amazon
+     warehouse: ${SNOWFLAKE_WH}
+     role: ${ROLE}
+     session_parameters:
+       QUERY_TAG: soda-queries
+       QUOTED_IDENTIFIERS_IGNORE_CASE: false
+   schema: amz_data_silver
+
+data_source reviews:
+   type: snowflake
+   connection:
+     username: ${SNOWFLAKE_USER}
+     password: ${SNOWFLAKE_PASS} 
+     account: ${SNOWFLAKE_ACCOUNT}
+     database: amazon
+     warehouse: ${SNOWFLAKE_WH} 
+     role: ${ROLE} 
+     session_parameters:
+       QUERY_TAG: soda-queries
+       QUOTED_IDENTIFIERS_IGNORE_CASE: false
+   schema: amz_data_silver
+
+soda_cloud:
+  host: ${HOST_SODA} 
+  api_key_id: ${API_KEY_ID}
+  api_key_secret: ${API_KEY_SECRET}
+
+
+#export SNOWFLAKE_USER=
+#export SNOWFLAKE_PASS=
+#soda test-connection -d reviews -c configuration.yml
+#soda test-connection -d metadata -c configuration.yml

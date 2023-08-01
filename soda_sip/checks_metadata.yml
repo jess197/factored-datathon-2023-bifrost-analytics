@@ -1,0 +1,25 @@
+checks for metadata:
+   # Checks that column contains no NULL values
+     - missing_count(asin) = 0:
+         name: No NULL values
+     - missing_count(metadata_key) = 0:
+         name: No NULL values
+     
+     - row_count > 15.417.611:
+          name: New data arrived
+
+     - schema:
+        name: Any schema changes
+        warn:
+          when schema changes:
+            - column delete
+            - column add
+            - column index change
+            - column type change
+   # Checks for columns removed or added, or changed type or index 
+     - schema:
+         fail:
+           when required column missing: [asin, metadata_key]
+
+     - duplicate_percent(metadata_key):
+        warn: when != 0%

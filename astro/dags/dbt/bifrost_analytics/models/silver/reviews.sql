@@ -33,7 +33,7 @@ with bronze_amz_reviews as (
       , reviewer_name::varchar(20000) reviewer_name
       , summary::varchar(20000) as summary
       , DATE(TO_TIMESTAMP_NTZ(review_time)) as review_time
-      , verified::varchar(20000) as verified
+      , verified::boolean as verified
       , ingestion_date 
    FROM bronze_amz_reviews
   UNION 
@@ -45,7 +45,7 @@ with bronze_amz_reviews as (
       , reviewer_name::varchar(20000) reviewer_name
       , summary::varchar(20000) as summary
       , DATE(TO_TIMESTAMP_NTZ(review_time)) as review_time
-      , verified::varchar(20000) as verified
+      , verified::boolean as verified
       , ingestion_date 
    FROM bronze_amz_reviews_streaming
   
