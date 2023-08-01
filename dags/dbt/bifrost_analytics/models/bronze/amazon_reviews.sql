@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 with source_amz_reviews as (
   select raw_file, last_modified_date
     from raw.reviews

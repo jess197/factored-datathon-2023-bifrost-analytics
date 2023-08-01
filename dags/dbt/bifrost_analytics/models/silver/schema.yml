@@ -33,8 +33,6 @@ models:
         description: Rank of the product
       - name: ingestion_date
         description: Timestamp of data ingestion
-    unique_key: metadata_key  # Define 'metadata_key' as the unique key for incremental updates
-    incremental_strategy: check  # Use 'check' strategy for incremental updates
 
   - name: reviews
     columns:
@@ -58,5 +56,3 @@ models:
         description: Indicates if the reviewer is verified
       - name: ingestion_date
         description: Timestamp of data ingestion
-    unique_key: surr_key_reviews  # Define 'reviews_key' as the unique key for incremental updates
-    incremental_strategy: check  # Use 'check' strategy for incremental updates

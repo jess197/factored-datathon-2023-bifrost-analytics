@@ -24,8 +24,6 @@ models:
         description: Timestamp of data ingestion
       - name: reviews_key
         description: Amazon Reviews Surrogate Key
-    unique_key: reviews_key  # Define 'reviews_key' as the unique key for incremental updates
-    incremental_strategy: check  # Use 'check' strategy for incremental updates
 
   - name: amazon_metadata
     columns:
@@ -70,8 +68,6 @@ models:
         description: Timestamp of data ingestion
       - name: metadata_key
         description: Amazon Metadata Surrogate Key
-    unique_key: metadata_key  # Define 'metadata_key' as the unique key for incremental updates
-    incremental_strategy: check  # Use 'check' strategy for incremental updates
 
   - name: amazon_reviews_streaming
     columns:
@@ -95,5 +91,3 @@ models:
         description: Timestamp of data ingestion
       - name: str_reviews_key
         description: Amazon Streaming Reviews Surrogate Key
-    unique_key: str_reviews_key  # Define 'amz_str_reviews_surr_key' as the unique key for incremental updates
-    incremental_strategy: check  # Use 'check' strategy for incremental updates
