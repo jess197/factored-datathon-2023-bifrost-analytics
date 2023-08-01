@@ -1,0 +1,93 @@
+# models/schema.yml
+version: 2
+
+models:
+  - name: amazon_reviews
+    columns:
+      - name: asin
+        description: ASIN (Amazon Standard Identification Number)
+      - name: overall
+        description: Overall rating of the review
+      - name: review_text
+        description: Text of the review
+      - name: reviewer_id
+        description: ID of the reviewer
+      - name: reviewer_name
+        description: Name of the reviewer
+      - name: summary
+        description: Summary of the review
+      - name: review_time
+        description: Timestamp of the review
+      - name: verified
+        description: Indicates if the reviewer is verified
+      - name: ingestion_date
+        description: Timestamp of data ingestion
+      - name: reviews_key
+        description: Amazon Reviews Surrogate Key
+
+  - name: amazon_metadata
+    columns:
+      - name: title
+        description: Title of the metadata
+      - name: asin
+        description: ASIN (Amazon Standard Identification Number)
+      - name: brand
+        description: Brand of the product
+      - name: category
+        description: Category of the product
+      - name: date
+        description: Date of the metadata
+      - name: description
+        description: Description of the product
+      - name: price
+        description: Price of the product
+        type: float
+      - name: details
+        description: Details of the product
+      - name: feature
+        description: Feature of the product
+      - name: main_category
+        description: Main category of the product
+      - name: also_buy
+        description: List of products also bought
+      - name: also_view
+        description: List of products also viewed
+      - name: rank
+        description: Rank of the product
+      - name: similar_item
+        description: Similar items to the product
+      - name: image
+        description: Image URL of the product
+      - name: fit
+        description: Fit of the product
+      - name: tech1
+        description: Technical details 1 of the product
+      - name: tech2
+        description: Technical details 2 of the product
+      - name: ingestion_date
+        description: Timestamp of data ingestion
+      - name: metadata_key
+        description: Amazon Metadata Surrogate Key
+
+  - name: amazon_reviews_streaming
+    columns:
+      - name: asin
+        description: ASIN (Amazon Standard Identification Number)
+      - name: overall
+        description: Overall rating of the review
+      - name: review_text
+        description: Text of the review
+      - name: reviewer_id
+        description: ID of the reviewer
+      - name: reviewer_name
+        description: Name of the reviewer
+      - name: summary
+        description: Summary of the review
+      - name: review_time
+        description: Timestamp of the review
+      - name: verified
+        description: Indicates if the reviewer is verified
+      - name: ingestion_date
+        description: Timestamp of data ingestion
+      - name: str_reviews_key
+        description: Amazon Streaming Reviews Surrogate Key
