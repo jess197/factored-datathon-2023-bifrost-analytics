@@ -12,7 +12,7 @@ profile_config = ProfileConfig(
     ),
 )
 
-my_cosmos_dag = DbtDag(
+dag_dbt_update = DbtDag(
     project_config=ProjectConfig(
         "/usr/local/airflow/dags/dbt/bifrost_analytics",
     ),
@@ -21,10 +21,10 @@ my_cosmos_dag = DbtDag(
         dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt",
     ),
     # normal dag parameters
-    schedule_interval="0 2 * * *",
-    start_date=datetime(2023, 1, 1),
+    schedule_interval="0 19-23,0-2 * * *",
+    start_date=datetime(2023, 7 , 31),
     catchup=False,
-    dag_id="my_cosmos_dag",
+    dag_id="dag_dbt_update",
 )
 
 
