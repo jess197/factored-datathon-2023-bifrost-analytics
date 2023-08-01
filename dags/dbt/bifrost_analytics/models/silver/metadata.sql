@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
 with bronze_amz_metadata AS (
   SELECT metadata_key

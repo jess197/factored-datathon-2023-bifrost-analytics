@@ -1,7 +1,7 @@
 
 
 
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
 with source_amz_reviews_streaming as (
     SELECT PARSE_JSON(rf.value), rs.last_modified_date

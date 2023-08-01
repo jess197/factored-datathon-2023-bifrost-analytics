@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
 with source_amz_metadata as (
   select raw_file, last_modified_date
