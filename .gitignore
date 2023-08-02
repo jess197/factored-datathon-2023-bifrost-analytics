@@ -4,4 +4,6 @@ bf_venv
 logs
 .env
 *__pycache__*
-airflow_settings.yaml
+*airflow_settings.yaml
+astro/include
+astro/plugins

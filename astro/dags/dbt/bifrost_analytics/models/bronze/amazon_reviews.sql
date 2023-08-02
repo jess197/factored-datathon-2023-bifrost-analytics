@@ -1,8 +1,14 @@
 {{ config(materialized='table') }}
+
 with source_amz_reviews as (
+
   select raw_file, last_modified_date
     from raw.reviews
-)
+
+),
+
+amz_reviews(
+  
  SELECT $1:asin as asin 
       , $1:overall as overall
       , $1:reviewText as review_text
@@ -16,3 +22,6 @@ with source_amz_reviews as (
       , last_modified_date as ingestion_date 
       , {{ dbt_utils.generate_surrogate_key(['review_text','reviewer_id','asin','review_time']) }} as reviews_key
    FROM source_amz_reviews
+)
+
+SELECT DISTINCT * FROM amz_reviews

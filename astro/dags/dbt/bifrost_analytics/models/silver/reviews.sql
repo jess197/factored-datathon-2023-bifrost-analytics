@@ -1,5 +1,9 @@
 {{ config(materialized='table') }}
-with bronze_amz_reviews as (
+
+
+with bronze_amz_reviews as
+(
+
   select reviews_key
        , asin 
        , overall 
@@ -11,7 +15,11 @@ with bronze_amz_reviews as (
        , verified
        , ingestion_date
     FROM {{ ref('amazon_reviews') }}
-), bronze_amz_reviews_streaming as (
+
+), 
+
+bronze_amz_reviews_streaming as (
+
     select str_reviews_key 
        , asin 
        , overall 
@@ -24,7 +32,10 @@ with bronze_amz_reviews as (
        , ingestion_date
     FROM {{ ref('amazon_reviews_streaming') }}
 
-)
+),
+
+silver_amz_reviews(
+
  SELECT distinct reviews_key as surr_key_reviews
       , asin::varchar(100) as asin
       , overall::varchar(5) as overall
@@ -48,4 +59,7 @@ with bronze_amz_reviews as (
       , verified::boolean as verified
       , ingestion_date 
    FROM bronze_amz_reviews_streaming
-  
+
+)
+
+SELECT * FROM silver_amz_reviews

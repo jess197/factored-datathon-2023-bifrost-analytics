@@ -6,8 +6,13 @@ models:
     columns:
       - name: metadata_key
         description: Amazon Metadata Surrogate Key
+        tests:
+          - unique
+          - not_null
       - name: title
         description: Title of the metadata
+        tests:
+          - not_null
       - name: asin
         description: ASIN (Amazon Standard Identification Number)
       - name: brand
@@ -38,14 +43,21 @@ models:
     columns:
       - name: surr_key_reviews
         description: Amazon Reviews Surrogate Key
+        tests:
+          - unique
+          - not_null
       - name: asin
         description: ASIN (Amazon Standard Identification Number)
       - name: overall
         description: Overall rating of the review
+        tests:
+          - not_null
       - name: review_text
         description: Text of the review
       - name: reviewer_id
         description: ID of the reviewer
+        tests:
+          - not_null
       - name: reviewer_name
         description: Name of the reviewer
       - name: summary
@@ -54,5 +66,10 @@ models:
         description: Timestamp of the review
       - name: verified
         description: Indicates if the reviewer is verified
+        tests:
+          - accepted_values:
+              values: ["true", "false"]
       - name: ingestion_date
         description: Timestamp of data ingestion
+        tests:
+          - not_null

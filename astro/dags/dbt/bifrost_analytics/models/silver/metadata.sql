@@ -1,6 +1,7 @@
 {{ config(materialized='table') }}
 
 with bronze_amz_metadata AS (
+
   SELECT metadata_key
        , title 
        , asin 
@@ -22,19 +23,27 @@ with bronze_amz_metadata AS (
       , rank
       , ingestion_date
   FROM {{ ref('amazon_metadata') }}
+
+),
+
+amz_metada_silver as (
+
+  SELECT distinct metadata_key
+    , REGEXP_REPLACE(title, '&rsquo;', '''') AS title
+    , asin
+    , brand_product as brand 
+    , category 
+    , date_metadata as date 
+    , price 
+    , details 
+    , feature 
+    , main_category  
+    , also_buy
+    , also_view
+    , rank
+    , ingestion_date
+  FROM bronze_amz_metadata
+
 )
-SELECT distinct metadata_key
-  , REGEXP_REPLACE(title, '&rsquo;', '''') AS title
-  , asin
-  , brand_product as brand 
-  , category 
-  , date_metadata as date 
-  , price 
-  , details 
-  , feature 
-  , main_category  
-  , also_buy
-  , also_view
-  , rank
-  , ingestion_date
-FROM bronze_amz_metadata
+
+SELECT * FROM amz_metada_silver
