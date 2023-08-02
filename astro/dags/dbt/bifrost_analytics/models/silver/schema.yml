@@ -64,6 +64,8 @@ models:
         description: Summary of the review
       - name: review_time
         description: Timestamp of the review
+        tests:
+          - not_null
       - name: verified
         description: Indicates if the reviewer is verified
         tests:
