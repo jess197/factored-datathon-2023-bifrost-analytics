@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 
 
 with bronze_amz_reviews as
@@ -40,7 +40,7 @@ silver_amz_reviews(
       *
    FROM bronze_amz_reviews
    WHERE
-      review_date >= (SELECT MAX(review_date) FROM AMZ_DATA_SILVER.REVIEWS )
+      review_date > (SELECT MAX(review_date) FROM AMZ_DATA_SILVER.REVIEWS )
   UNION 
    SELECT
       *
