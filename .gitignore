@@ -7,3 +7,5 @@ logs
 *airflow_settings.yaml
 astro/include
 astro/plugins
+astro/dags/dbt/bifrost_analytics/dbt_packages
+astro/dags/dbt/bifrost_analytics/target
