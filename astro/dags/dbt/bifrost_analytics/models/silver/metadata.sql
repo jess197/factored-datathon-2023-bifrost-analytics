@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+
 
 with bronze_amz_metadata AS (
 
@@ -17,7 +17,7 @@ with bronze_amz_metadata AS (
       , price 
       , details 
       , feature 
-      , main_category  
+      , INITCAP(replace(main_category, '&amp;', '&'))  as main_category
       , also_buy
       , also_view
       , rank
@@ -37,7 +37,7 @@ amz_metada_silver as (
     , price 
     , details 
     , feature 
-    , main_category  
+    , INITCAP(replace(main_category, '&amp;', '&'))  as main_category
     , also_buy
     , also_view
     , rank
