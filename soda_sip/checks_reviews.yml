@@ -17,11 +17,14 @@ checks for reviews:
      - freshness(ingestion_date):
           warn: when > 24h
 
-     - row_count > 139.754.947:
+     - row_count > 139754947:
           name: New data arrived
   
      - duplicate_percent(surr_key_reviews):
         warn: when != 0%
+
+     - duplicate_count(surr_key_reviews): 
+        warn: when != 0
      
      - schema: 
         name: Wrong column type 
@@ -47,7 +50,5 @@ checks for reviews:
             - column index change
             - column type change
 
-# soda scan -d metadata -c configuration.yml checks_reviews.yml
-# soda scan -d reviews -c configuration.yml checks_metadata.yml
-
-
+# soda scan -d reviews -c configuration.yml checks_reviews.yml
+# soda scan -d metadata -c configuration.yml checks_metadata.yml

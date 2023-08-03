@@ -1,15 +1,25 @@
 checks for metadata:
    # Checks that column contains no NULL values
      - missing_count(asin) = 0:
-         name: No NULL values
+         name: No NULL values in asin
      - missing_count(metadata_key) = 0:
-         name: No NULL values
+         name: NULL values in metadata_key 
+     - missing_count(price) = 0:
+         name: NULL values in price
+     - missing_count(category) = 0:
+         name: NULL values in category
+     - missing_count(title) = 0:
+         name: NULL values in title
+     - missing_count(brand) = 0:
+         name: NULL values in brand
+     - missing_count(main_category) = 0:
+         name: NULL values in main_category
      
-     - row_count > 15.417.611:
+     - row_count > 14741571:
           name: New data arrived
 
      - schema:
-        name: Any schema changes
+        name: No Schema Changes
         warn:
           when schema changes:
             - column delete
@@ -22,4 +32,5 @@ checks for metadata:
            when required column missing: [asin, metadata_key]
 
      - duplicate_percent(metadata_key):
+        name: Percent of Duplicate Data
         warn: when != 0%
