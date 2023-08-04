@@ -52,4 +52,4 @@ SELECT distinct  * FROM silver_amz_reviews
 
     limit 10000
     
-{% end if %}
+{% endif %}

@@ -29,4 +29,4 @@ SELECT DISTINCT * FROM amz_reviews
 
     limit 10000
     
-{% end if %}
+{% endif %}

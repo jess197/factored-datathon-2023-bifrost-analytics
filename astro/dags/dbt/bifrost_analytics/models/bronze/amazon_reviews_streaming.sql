@@ -35,4 +35,4 @@ SELECT DISTINCT * FROM amz_reviews_streaming
 
     limit 10000
     
-{% end if %}
+{% endif %}

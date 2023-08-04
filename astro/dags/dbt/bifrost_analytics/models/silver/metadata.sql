@@ -48,4 +48,4 @@ SELECT * FROM amz_metada_silver
 
     limit 10000
     
-{% end if %}
+{% endif %}

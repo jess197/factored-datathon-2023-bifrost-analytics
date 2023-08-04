@@ -42,5 +42,5 @@ SELECT DISTINCT * FROM amz_metadata
 
     limit 10000
     
-{% end if %}
+{% endif %}
 
