@@ -39,7 +39,7 @@ details_with_key as
 (
     select
         *,
-        {{ dbt_utils.generate_surrogate_key(['METADATA_KEY','DETAILS', 'ASIN']) }} AS details_keys
+        {{ dbt_utils.generate_surrogate_key(['METADATA_KEY','DETAILS', 'ASIN']) }} AS details_key
     from 
         details_values
 )

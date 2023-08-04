@@ -25,3 +25,11 @@ models:
       merge_behavior: upsert
       on_conflict: update
       unique_key: DETAILS_KEY
+
+  - name: products_details
+    config:
+      materialized: incremental
+      strategy: merge
+      merge_behavior: upsert
+      on_conflict: update
+      unique_key: METADATA_KEY
