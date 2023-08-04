@@ -30,7 +30,7 @@ details_values as
     
         AND ingestion_date = (select max(ingestion_date) from details_values )
 
-    {% ifend %}
+    {% endif %}
 )
 
     select 
