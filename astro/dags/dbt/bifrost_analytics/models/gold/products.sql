@@ -12,7 +12,6 @@ products_intermed as
         , date
         , price
         , main_category
-        , ingestion_date
     from {{ ref('metadata') }}
 
 {% if is_incremental() %}

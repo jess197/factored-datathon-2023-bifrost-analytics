@@ -20,7 +20,6 @@ details_values as
         , asin
         , REPLACE(REGEXP_REPLACE(TRIM(KEYS),'    '),':') details_key,
         , trim(REPLACE(REGEXP_REPLACE(VALUE,'^["!@#$%¨&*_+|;?:\\\s]*','',1),'"','')) details_values
-        , ingestion_date
     from
         prd_details_base
     where 
