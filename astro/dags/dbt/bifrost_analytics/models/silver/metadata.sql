@@ -43,3 +43,9 @@ amz_metada_silver AS (
 )
 
 SELECT * FROM amz_metada_silver
+
+{% if target.name == 'dev' %}
+
+    limit 10000
+    
+{% endif %}

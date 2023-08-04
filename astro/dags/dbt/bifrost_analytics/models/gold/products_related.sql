@@ -3,21 +3,20 @@
 
 with
 
-reviews as (
+metadata_related as (
     select
-        SURR_KEY_REVIEWS
+        metadata_key
         , ASIN
-        , OVERALL
-        , REVIEWER_ID
-        , REVIEW_TEXT
-        , REVIEW_TIME
-    from {{ref('reviews')}}
+        , ALSO_BUY
+        , ALSO_VIEW
+        , CATEGORY AS RELATED_CATEGORIES
+    from {{ref('metadata')}}
     
     {% if is_incremental()%}
         where ingestion_date > (
             SELECT last_altered
             FROM {{ database }}.information_schema.tables
-            WHERE table_schema = 'AMZ_DATA_GOLD' AND table_name = 'PRODUCTS_REVIEWS'
+            WHERE table_schema = 'AMZ_DATA_GOLD' AND table_name = 'PRODUCTS_RELATED'
         )
     {% endif %}
 )
@@ -25,10 +24,10 @@ reviews as (
 select 
     distinct *
 from
-    reviews
+    metadata_related
 
 {% if target.name == 'dev' %}
 
     limit 10000
-    
+
 {% endif %}

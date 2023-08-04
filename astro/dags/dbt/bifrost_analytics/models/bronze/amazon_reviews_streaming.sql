@@ -31,3 +31,8 @@ amz_reviews_streaming AS (
 )
 
 SELECT DISTINCT * FROM amz_reviews_streaming
+{% if target.name == 'dev' %}
+
+    limit 10000
+    
+{% endif %}

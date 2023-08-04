@@ -37,3 +37,10 @@ amz_metadata AS (
 )
 
 SELECT DISTINCT * FROM amz_metadata
+
+{% if target.name == 'dev' %}
+
+    limit 10000
+    
+{% endif %}
+
