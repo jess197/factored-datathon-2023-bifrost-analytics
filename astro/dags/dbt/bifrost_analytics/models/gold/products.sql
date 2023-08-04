@@ -16,7 +16,11 @@ products_intermed as
 
 {% if is_incremental() %}
 
-    where ingestion_date = (select max(ingestion_date) from amz_data_gold.products)
+    where ingestion_date > (
+        SELECT last_altered
+        FROM {{ database }}.information_schema.tables
+        WHERE table_schema = 'AMZ_DATA_GOLD' AND table_name = 'PRODUCTS'
+     )
 
 {% endif %}
 
@@ -27,4 +31,3 @@ select
     distinct *
 from
     products_intermed
-

@@ -14,7 +14,11 @@ reviews as (
     from {{ref('reviews')}}
     
     {% if is_incremental()%}
-        where ingestion_date = ( select max(ingestion_date) from {{ref('reviews')}})
+        where ingestion_date > (
+            SELECT last_altered
+            FROM {{ database }}.information_schema.tables
+            WHERE table_schema = 'AMZ_DATA_GOLD' AND table_name = 'PRODUCTS_REVIEWS'
+        )
     {% endif %}
 )
 
