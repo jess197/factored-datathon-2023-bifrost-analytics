@@ -31,3 +31,9 @@ select
     distinct *
 from
     products_intermed
+
+{% if target.name == 'dev' %}
+
+    limit 10000
+    
+{% end if %}

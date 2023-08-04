@@ -47,3 +47,9 @@ silver_amz_reviews AS (
 )
 
 SELECT distinct  * FROM silver_amz_reviews
+
+{% if target.name == 'dev' %}
+
+    limit 10000
+    
+{% end if %}

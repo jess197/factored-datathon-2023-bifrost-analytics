@@ -48,4 +48,9 @@ details_with_key as
         distinct * 
     from
         details_with_key
+        
+{% if target.name == 'dev' %}
 
+    limit 10000
+    
+{% end if %}

@@ -26,3 +26,9 @@ select
     distinct *
 from
     reviews
+
+{% if target.name == 'dev' %}
+
+    limit 10000
+    
+{% end if %}
