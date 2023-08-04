@@ -85,12 +85,4 @@ This approach enabled us to provide Data Scientist and Data Analyst with access 
     
 
 ### 5. TECH STACK  
-<img src="./docs/img/azure.png" alt="azure" style="vertical-align:top; margin:4px; height:40px; width:40px">
-<img src="./docs/img/aws.png" alt="aws" style="vertical-align:top; margin:4px; height:40px; width:40px">
-<img src="./docs/img/python.png" alt="python" style="vertical-align:top; margin:4px; height:40px; width:40px">
-<img src="./docs/img/dbt.png" alt="dbt" style="vertical-align:top; margin:4px; height:40px; width:100px">
-<img src="./docs/img/airflow.png" alt="airflow" style="vertical-align:top; margin:4px; height:40px; width:40px">
-<img src="./docs/img/docker.png" alt="docker" style="vertical-align:top; margin:4px; height:40px; width:40px">
-<img src="./docs/img/snowflake.png" alt="snowflake" style="vertical-align:top; margin:4px; height:40px; width:40px">
-<img src="./docs/img/pandas.png" alt="pandas" style="vertical-align:top; margin:4px; height:40px; width:100px">
-<img src="./docs/img/metabase.png" alt="metabase" style="vertical-align:top; margin:4px; height:40px; width:40px">
+<img src="./docs/img/azure.png" alt="azure" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/aws.png" alt="aws" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/python.png" alt="python" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/dbt.png" alt="dbt" style="vertical-align:top; margin:4px; height:40px; width:100px"><img src="./docs/img/airflow.png" alt="airflow" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/docker.png" alt="docker" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/snowflake.png" alt="snowflake" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/pandas.png" alt="pandas" style="vertical-align:top; margin:4px; height:40px; width:100px"><img src="./docs/img/metabase.png" alt="metabase" style="vertical-align:top; margin:4px; height:40px; width:40px">
