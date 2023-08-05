@@ -32,8 +32,3 @@ select
 from
     products_intermed
 
-{% if target.name == 'dev' %}
-
-    limit 10000
-    
-{% endif %}

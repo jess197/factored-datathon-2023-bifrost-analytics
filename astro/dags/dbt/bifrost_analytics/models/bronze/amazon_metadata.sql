@@ -21,10 +21,10 @@ amz_metadata AS (
       , CASE WHEN $1:main_cat LIKE '%<img src%' THEN REGEXP_REPLACE(REGEXP_SUBSTR($1:main_cat, 'alt="([^"]*)"'), '^alt="|"$', '')
         ELSE $1:main_cat
         END AS main_category  
-      , ARRAY_TO_STRING($1:also_buy, ', ') AS also_buy
-      , ARRAY_TO_STRING($1:also_view, ', ') AS also_view
+      , $1:also_buy AS also_buy
+      , $1:also_view AS also_view
       ,   CASE WHEN $1:rank IS NULL OR $1:rank = '[]' THEN ''::VARCHAR
-              ELSE REPLACE(REGEXP_REPLACE($1:rank, '[>#()[""]', '', 1, 0, 'i'),']','')::VARCHAR(1000) END AS rank
+              ELSE REPLACE(REGEXP_REPLACE($1:rank, '[>#()[""]', '', 1, 0, 'i'),']','')::VARCHAR(5000) END AS rank
       , $1:similar_item::varchar(100000) AS similar_item
       , $1:image::varchar(10000) AS image 
       , $1:fit::varchar(10000) AS fit
@@ -38,9 +38,4 @@ amz_metadata AS (
 
 SELECT DISTINCT * FROM amz_metadata
 
-{% if target.name == 'dev' %}
-
-    limit 10000
-    
-{% endif %}
 

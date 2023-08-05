@@ -27,8 +27,3 @@ select
 from
     reviews
 
-{% if target.name == 'dev' %}
-
-    limit 10000
-    
-{% endif %}

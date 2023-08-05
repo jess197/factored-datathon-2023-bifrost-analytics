@@ -26,8 +26,3 @@ select
 from
     metadata_related
 
-{% if target.name == 'dev' %}
-
-    limit 10000
-
-{% endif %}
