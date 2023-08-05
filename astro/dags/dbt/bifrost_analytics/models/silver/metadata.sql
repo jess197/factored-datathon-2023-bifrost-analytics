@@ -19,6 +19,7 @@ WITH bronze_amz_metadata AS (
       , also_buy
       , also_view
       , rank
+      , ingestion_date
   FROM {{ ref('amazon_metadata') }}
 
 ),
@@ -38,14 +39,10 @@ amz_metada_silver AS (
     , also_buy
     , also_view
     , rank
+    , ingestion_date
   FROM bronze_amz_metadata
 
 )
 
 SELECT * FROM amz_metada_silver
 
-{% if target.name == 'dev' %}
-
-    limit 10000
-    
-{% endif %}

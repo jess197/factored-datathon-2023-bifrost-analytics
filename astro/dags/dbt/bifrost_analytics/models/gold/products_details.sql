@@ -49,8 +49,4 @@ details_with_key as
     from
         details_with_key
 
-{% if target.name == 'dev' %}
 
-    limit 10000
-    
-{% endif %}

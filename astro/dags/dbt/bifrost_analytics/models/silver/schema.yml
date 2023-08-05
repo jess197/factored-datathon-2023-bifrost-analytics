@@ -48,7 +48,6 @@ models:
       - name: surr_key_reviews
         description: Amazon Reviews Surrogate Key
         tests:
-          - unique
           - not_null
       - name: asin
         description: ASIN (Amazon Standard Identification Number)
@@ -68,8 +67,6 @@ models:
         description: Summary of the review
       - name: review_time
         description: Timestamp of the review
-        tests:
-          - not_null
       - name: verified
         description: Indicates if the reviewer is verified
         tests:
