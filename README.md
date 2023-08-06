@@ -147,7 +147,11 @@ The process of preparing the data for model building was separated into five ste
 
 <b> 4. Word clouds: </b>  For each group formed by artificial intelligence, a word cloud graphic is created that facilitates the visualization of the key words of the evaluations.
 
-<b> Classification model: </b> If sellers want to have an even greater immersion, the specific classification model for their products is made available. In this way, as new evaluations arrive, the buyer will know if the feelings are positive or negative, according to the parameters that he himself will define
+<b> 5. Classification model: </b> If sellers want to have an even greater immersion, the specific classification model for their products is made available. In this way, as new evaluations arrive, the buyer will know if the feelings are positive or negative, according to the parameters that he himself will define
+</p>
+
+<p>
+<b> 6. Seller Auto Service: </b> We offer all these analytics as a customized service to our client, giving them the freedom to select which products, which date space or even which product categories they want to gain insights into improvement points. For each combination there will be a different model
 </p>
 
 ##### 3.2.1 Support Vector Machine (SVM)
