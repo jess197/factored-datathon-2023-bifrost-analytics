@@ -183,6 +183,27 @@ Word clouds help to quickly visualize the biggest pains in each of the specific 
 ![ReviewDashboard](docs/img/review_analysis.png)
 
 
+##### 4.2 PERSONALIZED RECOMMENDATIONS 
+<p> Number of recomendations per review per reviewer </p>
+<p> We can see that to the reviewer Rondell R. (in the second line) based on his review of the product <b >"Dark Iron Fitness Genuine leather" </b> we had 8 recommendations for him on other products. </p>
+
+![ReviewDashboard](docs/img/product.png)
+
+<br>
+
+![ReviewDashboard](docs/img/rec_per_review_per_reviewer.png)
+
+<br>
+
+###### PRODUCT RECOMMENDATIONS:
+
+<p> Example: ACHIEVE FIT Weightlifting Gloves - Leather Palm for Fitness </p>
+
+![ReviewDashboard](docs/img/product_rec.png)
+
+<br>
+
+![ReviewDashboard](docs/img/prod_rec.png)
 
 ### 5. TEAM 🇧🇷
  - Jessica Caroline Costa e Silva - Data Engineer | <b> [LinkedIn](https://www.linkedin.com/in/jessicaccostaesilva/) </b> | <b> [Github](https://github.com/jess197) </b> 
