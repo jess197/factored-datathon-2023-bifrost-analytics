@@ -72,17 +72,114 @@ This approach enabled us to provide Data Scientist and Data Analyst with access 
 
  ![Percentage of Duplicate Reviews](docs/img/percent_duplicate_reviews.png)
 
-### 3. PRODUCT 
-(To be updated)
- - Consumer Recommendation
- - Seller Recommendation
+### 3. DATA SCIENCE: Building a Recommender System for Customers and Sellers
+
+##### 3.1 Recommender System for Customers
+<p> We developed a recommendation engine that suggests new products based on historic purchase data. </p>
+
+<p>
+The development of this recommendation algorithm had as its main motivating source the need to deliver to the customer an enhanced experience in discovery from their first purchase on the platform. From this point on, the more interactions (purchases) a customer makes, the more immersive their experience should be.
+
+There are two main objectives in this recommender system:
+
+<b>1. Recommendation Similarity: </b> To create a list of similar products for all products, formed by other products of the same main category and that have the average evaluation score equal or higher than 4.
+</p>
+
+<b>2. Personalized Recommendation:</b> Based on the last purchased products, form a personalized recommendation list with new similar products.
+
+##### 3.1.1 Data Preparation
+<p>The process of preparing the data for model building was separated into five steps: </p>
+<p>
+<b> 1. Text Cleaning: </b> Removal of all special characters, punctuations and conversion of accented letters to plain letters;
+
+<b> 2. Tokenizing: </b> Transformation of the event_text column, returning a list of tokens;
+
+<b> 3. Remove Stopwords: </b> Removal of all stopwords present in the token lists; 
+
+<b> 4. Count Words: </b> Counting the total number of significant words in each event and filtering to keep only events that have more than 32 significant words; and
+
+<b> 5. Count Vectorizer: </b> use of the count vectorizer algorithm to transform the texts worked on so far into numerical data.
+</p>
+
+##### 3.1.2 Weighted Alternating Least Squares
+<p>
+After preparing the data, we can proceed to use the Weighted Alternating Least Squares <b> (WALS) </b> algorithm. Although we are using a Content-Based approach for each product, WALS is a Collaborative Filtering algorithm. A collaborative filtering model aims to optimize user vectors and item vectors, seeking to minimize the difference between predicted and actual user ratings. In the case of this algorithm, the user figure is represented by the content of the products (which was treated in the previous steps), and the items are the characteristics of these products, In this way, we will be able not only to find the most similar products to each other but also to find niches and new segmentations of groups among the products. At this point, the first step to use the WALS algorithm is to apply the Best Matching 25 (BM25) algorithm to the processed data of product texts. This is a weighting algorithm for collaborative filtering, with which the input values of the matrix that will be used in WALS will be adjusted, taking into account the frequency of terms and statistical relevance.
+</p>
+
+##### 3.1.3 Similarity Recommendations
+<p>
+Applying the WALS algorithm to our data, we produce our first recommendation. A dataframe with a list of the most similar products to another given product. This recommendation can be used on product pages to further increase the user's range of options, and will also be used as a post-purchase strategy, either individually for the user to remain entertained in that product niche or as part of the personalized list that will have the user's entire purchase history.
+</p>
+
+##### Example of Similarity Recommendations
+
+![Example-Similarity](docs/img/example-similarity.png)
+<p>
+The amount of recommendations is up to the user. In our study case we provided 16 recommendations for each product
+</p>
+
+##### 3.1.4 Personalized Recommendations
+<p>
+The recommendation experience is made more immersive by building personalized recommendations. This step dynamically builds a unique list of recommendations based on the last events purchased by the user.
+</p>
+
+##### Example of Personalized Recommendations
+
+![Example-Personalized](docs/img/example-personalized.png)
+<p>
+Through the WALS algorithm, each product now has a list of similar products, ordered from most to least similar. Through the table detailing the products purchased, the two tables are joined in an alternating manner, as in the example above.
+</p>
+
+
+##### 3.2 Recommender System for Sellers
+<p> We built a seller feedback analysis tool that identifies common complaints and provides detailed insights on product quality. </p>
+
+<p>
+This algorithm aims to provide data as value to salespeople, making them data-driven in their decision making and sales strategies.
+
+The process of preparing the data for model building was separated into five steps:
+
+<b> 1. Sentimental Analysis: </b> Training a Support Vector Machine (SVM) classifier to capture the sentiment towards the seller's products
+
+<b> 2. Focus on what's not good: </b> A view of the top negative comments is built so that sellers can know, in real time, which products need adjustments.
+
+<b> 3. Clustering by type of comments: </b> Product reviews are grouped through an algorithm so that the seller can quickly get a view of how many macro actions will be needed.
+
+<b> 4. Word clouds: </b>  For each group formed by artificial intelligence, a word cloud graphic is created that facilitates the visualization of the key words of the evaluations.
+
+<b> Classification model: </b> If sellers want to have an even greater immersion, the specific classification model for their products is made available. In this way, as new evaluations arrive, the buyer will know if the feelings are positive or negative, according to the parameters that he himself will define
+</p>
+
+##### 3.2.1 Support Vector Machine (SVM)
+<br>
+
+![SVM](docs/img/svm.png)
+
+<br>
+
+##### 3.2.2 Clustering with K-Means
+
+<p>
+For each classification model we create (based on seller preference data) we also proceed with the clustering algorithm to group complaints into more specific niches. The clustering method used was K-Means and the method for choosing the optimal number of clusters was the silhouette method. In this way it is possible to create a recursive process that automatically chooses the optimal number k based on the seller's data
+</p>
+
+![K-Clustering](docs/img/k-means-clustering.png)
+
+##### 3.2.3 Visualizing Negative Reviews with Word Clouds
+<p>
+Word clouds help to quickly visualize the biggest pains in each of the specific niches that were created from the clustering.
+</p>
+
+![WordCloud](docs/img/word_cloud.png)
  
-### 4. TEAM 🇧🇷
+
+
+### 5. TEAM 🇧🇷
  - Jessica Caroline Costa e Silva - Data Engineer | <b> [LinkedIn](https://www.linkedin.com/in/jessicaccostaesilva/) </b> | <b> [Github](https://github.com/jess197) </b> 
  - Luan José de Almeida Cardoso - Data Engineer | <b> [LinkedIn](https://www.linkedin.com/in/luanjosecar/) </b> | <b> [Github](https://github.com/luanjosecar) </b>
   - Brunno Kalyxton Sousa Ramos - Data Scientist | <b> [LinkedIn](https://www.linkedin.com/in/brunno-kalyxton-sousa-ramos-79a37817b/) </b> | <b> [Github](https://github.com/bksramos) </b>
  - Gabrielle Moura - Data Analyst |<b> [LinkedIn](https://www.linkedin.com/in/gabrielle-moura-a3a782156/) </b> | <b> [Github](https://github.com/gabymoura) </b>
     
 
-### 5. TECH STACK  
+### 6. TECH STACK  
 <img src="./docs/img/azure.png" alt="azure" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/aws.png" alt="aws" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/python.png" alt="python" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/dbt.png" alt="dbt" style="vertical-align:top; margin:4px; height:40px; width:100px"><img src="./docs/img/airflow.png" alt="airflow" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/docker.png" alt="docker" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/snowflake.png" alt="snowflake" style="vertical-align:top; margin:4px; height:40px; width:40px"><img src="./docs/img/pandas.png" alt="pandas" style="vertical-align:top; margin:4px; height:40px; width:100px"><img src="./docs/img/metabase.png" alt="metabase" style="vertical-align:top; margin:4px; height:40px; width:40px">
