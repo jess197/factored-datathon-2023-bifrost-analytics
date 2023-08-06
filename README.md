@@ -172,6 +172,12 @@ Word clouds help to quickly visualize the biggest pains in each of the specific 
 
 ![WordCloud](docs/img/word_cloud.png)
  
+### 4. ANALYTICS
+
+##### 4.1 REVIEW ANALYSIS DASHBOARD 
+
+![ReviewDashboard](docs/img/review_analysis.png)
+
 
 
 ### 5. TEAM 🇧🇷
