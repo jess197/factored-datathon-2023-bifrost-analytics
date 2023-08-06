@@ -182,16 +182,23 @@ Word clouds help to quickly visualize the biggest pains in each of the specific 
 
 ![ReviewDashboard](docs/img/review_analysis.png)
 
+<p>
+<b> What Are Customers Saying? </b>
+
+We analyzed customer reviews to understand the most frequently mentioned positives and negatives for different categories of products.
+
+</p>
+
 
 ##### 4.2 PERSONALIZED RECOMMENDATIONS 
 <p> Number of recomendations per review per reviewer </p>
 <p> We can see that to the reviewer Rondell R. (in the second line) based on his review of the product <b >"Dark Iron Fitness Genuine leather" </b> we had 8 recommendations for him on other products. </p>
 
-![ReviewDashboard](docs/img/product.png)
+![Product](docs/img/product.png)
 
 <br>
 
-![ReviewDashboard](docs/img/rec_per_review_per_reviewer.png)
+![ResultsRecommendationsReview](docs/img/rec_per_review_per_reviewer.png)
 
 <br>
 
@@ -199,11 +206,16 @@ Word clouds help to quickly visualize the biggest pains in each of the specific 
 
 <p> Example: ACHIEVE FIT Weightlifting Gloves - Leather Palm for Fitness </p>
 
-![ReviewDashboard](docs/img/product_rec.png)
+![ResultsProductRecomendation](docs/img/product_rec.png)
 
 <br>
 
-![ReviewDashboard](docs/img/prod_rec.png)
+![ProductRec](docs/img/prod_rec.png)
+
+
+##### 4.3 PERFORMANCE ANALYSIS DASHBOARD
+
+![PerformanceDashboard](docs/img/performance_analysis.png)
 
 ### 5. TEAM 🇧🇷
  - Jessica Caroline Costa e Silva - Data Engineer | <b> [LinkedIn](https://www.linkedin.com/in/jessicaccostaesilva/) </b> | <b> [Github](https://github.com/jess197) </b> 
